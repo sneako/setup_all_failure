@@ -4,8 +4,10 @@ defmodule SetupAllFailureTest do
 
   setup_all do
     Process.exit(self(), :error)
-    # This also triggers the issue
+
+    # These also trigger the issue
     # spawn_link(fn -> Process.exit(self(), :error) end)
+    # spawn_link(fn -> :erlang.atom_to_binary({:some, :tuple}) end)
   end
 
   test "greets the world" do
